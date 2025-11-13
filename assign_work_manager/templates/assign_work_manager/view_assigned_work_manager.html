@@ -1,0 +1,88 @@
+{% extends 'temp/main_manager.html' %}
+{% block base3 %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .view_assignmngr_box h2 {
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .view_assignmngr_box table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .view_assignmngr_box th,
+        .view_assignmngr_box td {
+            padding: 10px;
+            border: 1px solid #333;
+            text-align: left;
+        }
+
+        .view_assignmngr_box th {
+            background-color: #2c2c2c;
+            color: #b5bcc5;
+        }
+
+        .view_assignmngr_box td {
+            background-color: #2c2c2c;
+            color: #869791;
+        }
+
+    </style>
+</head>
+<body>
+<center>
+    <img class="w-75" src="/static/img/download2.jpg" alt="Image">
+
+</center>
+
+<div class="view_assignmngr_box">
+<h4 align="center" style="color: white">View Assigned Work to Manager</h4>
+<form method="post">
+	<table border="1" align="center" class="table table-bordered">
+		<tr style="color: black">
+{#		<th>Work details</th>#}
+		<th>Date</th>
+		<th>time</th>
+{#		<th>Work status</th>#}
+            <th></th>
+            <th></th>
+		
+	    </tr>
+        {%  for i in a %}
+	<tr style="color: black">
+{#		<td>{{ i.work_details }}</td>#}
+		<td>{{ i.date }}</td>
+    	<td>{{ i.time }}</td>
+{#		<td>{{ i.work_status }}</td>#}
+        <td><a href="/vcrypt/dec/" class="btn btn-primary">View Work</a> </td>
+         <td><a href="/assign_work_employee/post_assign_work/{{ i.assign_id }}" class="btn btn-primary">Assign</a></td>
+		
+	</tr>
+
+        {% endfor %}
+	
+	</table>
+</form>
+</div>
+</body>
+</html>
+{% endblock %}

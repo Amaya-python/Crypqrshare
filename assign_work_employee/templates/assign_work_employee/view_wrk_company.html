@@ -1,0 +1,84 @@
+{% extends 'temp/main_company.html' %}
+{% block base3 %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .view_work_box h2 {
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .view_work_box table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .view_work_box th,
+        .view_work_box td {
+            padding: 10px;
+            border: 1px solid #333;
+            text-align: left;
+        }
+
+        .view_work_box th {
+            background-color: #2c2c2c;
+            color: #b5bcc5;
+        }
+
+        .view_work_box td {
+            background-color: #2c2c2c;
+            color: #869791;
+        }
+
+    </style>
+</head>
+<body>
+<center>
+    <img class="w-100" src="/static/img/welcome.webp" alt="Image">
+
+</center>
+
+<div class="view_work_box">
+<h4 align="center" style="color: white">Assign Work to Employee</h4>
+<form method="post">
+	<table border="1" style="border-color: #b5bcc5" class="table table-bordered" align="center">
+		<tr style="color: black">
+		<th>Work details</th>
+		<th>Date</th>
+		<th>time</th>
+		<th>Work status</th>
+		
+	    </tr>
+        {% for i in b %}
+	<tr style="color: black">
+		<td>{{ i.assign.work_details }}</td>
+		<td>{{ i.date }}</td>
+		<td>{{ i.time }}</td>
+		<td>{{ i.work_status }}</td>
+{#    <td><a href="/assign_work_employee/upp/{{ i.assign_emp_id }}">Update</a> </td>#}
+		
+	
+	</tr>
+	{% endfor %}
+	</table>
+</form>
+</div>
+</body>
+</html>
+{% endblock %}

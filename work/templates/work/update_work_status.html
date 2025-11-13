@@ -1,0 +1,29 @@
+{% extends 'temp/main_employee.html' %}
+{% block base2 %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h2 align="center">Update work status</h2>
+<form method="post">
+    {% csrf_token %}
+	<table align="center" border="1">
+
+        <tr>
+			<td>Work status</td>
+			<td><input type="text" name="work_status" required="" class="form-control"></td>
+		</tr>
+
+
+
+		<tr>
+
+			<td><br><input type="submit" value="send" ></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
+{% endblock %}

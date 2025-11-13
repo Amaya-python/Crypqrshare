@@ -1,0 +1,235 @@
+{% extends 'temp/main_manager.html' %}
+{% block base3 %}
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+    <style>
+
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile_view-box{
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .profile_view-box .logo img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .profile_view-box h2 {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #e0e0e0;
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+
+        .input-group input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .input-group .radio-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group .radio-group label {
+            margin-right: 10px;
+            color: #e0e0e0;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            border-color: #5cb85c;
+            outline: none;
+        }
+
+        .input-group input:invalid:focus,
+        .input-group select:invalid:focus,
+        .input-group textarea:invalid:focus {
+            border-color: #ff0000;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5cb85c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        .links {
+            margin-top: 15px;
+        }
+
+        .links a {
+            color: #5cb85c;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        #error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+<center>
+    <div>
+    <img class="w-75" src="/static/img/download2.jpg"  alt="Image">
+        <div class="profile_view_container">
+        <div class="profile_view-box">
+	<h2 align="center">Manager registration</h2>
+<form method="post">
+    {% csrf_token %}
+	<table border="1" align="center" class="table table-bordered">
+
+		<tr>
+			<td>First name</td>
+			<td><input type="text" name="fname" value="{{ c.firstname }}" required="" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>Last name</td>
+			<td><input type="text" name="lname" value="{{ c.lastname }}" required="" class="form-control"></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="password" name="pwd" value="{{ c.password }}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<td>Date of birth</td>
+			<td><input type="date" name="date" value="{{ c.date_of_birth }}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type="email" name="email" value="{{ c.email }}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<td>Gender</td>
+
+
+			<td><input type="radio" name="gndr" value="Male" value="{{ c.gender }}" checked="">Male
+			<input type="radio" name="gndr" value="Female" value="{{ c.gender }}">Female
+			<input type="radio" name="gndr" value="Others" value="{{ c.gender }}">Others</td>
+		</tr>
+
+			<tr>
+                <td>Address</td>
+				<td><input type="textarea" name="addr" row="5" cols="9" value="{{ c.address }}" class="form-control" required></td>
+			</tr>
+			<tr>
+                <td>City</td>
+                <td><input type="text" name="city" value="{{ c.city }}" class="form-control" required></td>
+			</tr>
+			<tr>
+                <td>District</td>
+		        <td><input type="text" name="dis" value="{{ c.district }}" class="form-control" required></td>
+		    </tr>
+		    <tr>
+                <td>Pincode</td>
+		        <td><input type="text" name="pin" value="{{ c.pincode }}" class="form-control" required></td>
+
+		    </tr>
+
+		<tr>
+			<td>Phone number</td>
+			<td><input type="text" name="phn" value="{{ c.phone_number }}" pattern="[0-9]{10}" class="form-control" required></td>
+		</tr>
+		 <tr>
+        <td>
+            <label for="ms">Marital Status</label></td>
+                       <td> <select  name="ms" {{ c.marital_status }} class="form-control" required>
+{#                            <option value="" disabled selected>Select </option>#}
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="divorced">Divorced</option>
+                            <option value="widowed">Widowed</option>
+                        </select>
+                        </td>
+        </tr>
+		<tr>
+			<td>Join date</td>
+			<td><input type="date" name="jd" value="{{ c.join_date }}" class="form-control" required></td>
+		</tr>
+
+		<tr>
+			<td><button type="submit" value="submit" >Submit</td>
+
+{#			<td><input type="reset" value="clear" ></td>#}
+		</tr>
+	</table>
+</form>
+
+</body>
+</html>
+{% endblock %}

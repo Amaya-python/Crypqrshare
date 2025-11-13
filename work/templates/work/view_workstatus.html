@@ -1,0 +1,36 @@
+{% extends 'temp/main_employee.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h2 align="center">View work status</h2>
+<form method="post">
+{% csrf_token %}
+	<table border="1" align="center" class="table table-bordered">
+		<tr style="color: white">
+		<th>Work details</th>
+		<th>Date</th>
+{#		<th>Time</th>#}
+{#		<th>Status</th>#}
+		
+	   </tr>
+        {% for i in a %}
+	<tr style="color: white">
+		<td>{{ i.file }}</td>
+		<td>{{ i.date }}</td>
+{#		<td>{{ i.time }}</td>#}
+{#		<td>{{ i.work_status }}</td>#}
+{#        <td><input type="submit" value="update"> </td>#}
+     <td><a href="/work/update_work_status/{{ i.work_id }}">Update</a></td>
+		
+	</tr>
+        {% endfor %}
+	
+	</table>
+</form>
+</body>
+</html>
+{% endblock %}

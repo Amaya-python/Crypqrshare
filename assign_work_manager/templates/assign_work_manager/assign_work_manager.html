@@ -1,0 +1,36 @@
+{% extends 'temp/main_manager.html' %}
+{% block base3 %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h2 align="center">Assign work to manager</h2>
+<form method="post">
+ {% csrf_token %}
+	<table border="1" align="center" class="table table-bordered">
+		<tr style="color: black">
+		<th>Work details</th>
+		<th>Date</th>
+		<th>time</th>
+		<th>Work status</th>
+	    </tr>
+        {% for i in b %}
+	   
+	<tr style="color: black">
+		<td>{{ i.work_details }}</td>
+		<td>{{ i.date }}</td>
+		<td>{{ i.time }}</td>
+		<td>{{ i.work_status }}</td>
+{#        <td><input type="submit" value="Assign"></td>#}
+{#     <td><a href="/assign_work_employee/post_assign_work/{{ i.assign_id }}">Assign</a></td>#}
+	
+	</tr>
+        {% endfor %}
+	
+	</table>
+</form>
+</body>
+</html>
+{% endblock %}

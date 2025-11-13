@@ -1,0 +1,251 @@
+{% extends 'temp/main_home.html' %}
+{% block base3 %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+      <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .registration-box {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .registration-box .logo img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .registration-box h2 {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #e0e0e0;
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+
+        .input-group input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .input-group .radio-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group .radio-group label {
+            margin-right: 10px;
+            color: #e0e0e0;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            border-color: #5cb85c;
+            outline: none;
+        }
+
+        .input-group input:invalid:focus,
+        .input-group select:invalid:focus,
+        .input-group textarea:invalid:focus {
+            border-color: #ff0000;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5cb85c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        .links {
+            margin-top: 15px;
+        }
+
+        .links a {
+            color: #5cb85c;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        #error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<center>
+<img class="w-75" src="/static/img/asymmetric-encryption-public-key-cryptography.jpg"  alt="Image">
+</center>
+<center>
+ <div class="registration-container">
+       <div class="registration-box">
+	<h4 align="center" style="color: white">EMPLOYEE REGISTRATION</h4>
+<form  action="employee_reg.html" method="post">
+    {% csrf_token %}
+	<table align="center">
+		<tr>
+			<td>First name</td>
+			<td><input type="text" name="fname"  maxlength="30"  class="form-control" required></td>
+		</tr>
+		<tr>
+			<td>Last name</td>
+			<td><input type="text" name="lname"  maxlength="30" class="form-control" required></td>
+		</tr>
+        <tr>
+			<td>User name</td>
+			<td><input type="email" name="uname" class="form-control" required></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="password" name="pwd"  pattern="(?=.*\d)(?=.*[!@#$%^&*(),.?\:{}|<>]).{8,}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type="email" name="email" maxlength="100" class="form-control" required></td>
+		</tr>
+        <tr>
+			<td>Date of birth</td>
+			<td><input type="date" name="dob" class="form-control" required></td>
+		</tr>
+		<tr>
+			<td><br>Gender</td>
+
+			<td><input type="radio" name="gndr" value="Male" checked="">Male
+			<input type="radio" name="gndr" value="Female">Female
+			<input type="radio" name="gndr" value="Others">Others</td>
+		</tr>
+				
+			<tr>
+                <td>Address</td>
+                <td><input type="text" name="addr" rows="3" class="form-control" required></td>
+			</tr>
+
+			<tr>
+                <td>City</td>
+
+			    <td> <input type="text" name="city" class="form-control" required ></td>
+			</tr>
+			<tr>
+                <td>District</td>
+		        <td> <input type="text" name="dis" class="form-control" required></td>
+		    </tr>
+		    <tr>
+                <td>Pincode</td>
+		        <td> <input type="text" name="pin"  pattern="\d{6}" title="Please enter a valid 6-digit pincode"  class="form-control" required></td>
+
+		    </tr>
+
+		<tr>
+			<td>Phone number</td>
+			<td><input type="tel" name="phn" pattern="\d{10}" title="Please enter a valid 10-digit phone number" class="form-control" required></td>
+		</tr>
+		 <tr>
+        <td>
+            <label for="ms">Marital Status</label></td>
+                       <td> <select  name="ms" required>
+{#                            <option value="" disabled selected>Select </option>#}
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="divorced">Divorced</option>
+                            <option value="widowed">Widowed</option>
+                        </select>
+                        </td>
+        </tr>
+		<tr>
+			<td>Join date</td>
+			<td><input type="date" name="jd" class="form-control" required></td>
+		</tr>
+		<tr>
+			<td>Status position</td>
+			<td><input type="text" name="sp" class="form-control" required></td>
+		</tr>
+        <tr>
+            <td>
+                <button type="submit">Register</button></td>
+                <td id="error-message">
+                    Password must be at least 8 characters long and include at least one number and one special character.
+                </td>
+        </tr>
+    </form>
+ </div>
+ </div>
+</center>
+{% if msg %}
+    <script>
+    alert('Successfully registered')
+    </script>
+{% endif %}
+	</table>
+</body>
+</html>
+{% endblock %}

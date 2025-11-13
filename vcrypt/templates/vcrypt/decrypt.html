@@ -1,0 +1,77 @@
+{% extends 'temp/main_manager.html' %}
+{% block base3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+      <style>
+   body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .decrypt_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .decrypt_box {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            text-align: center;
+        }
+
+        button {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5cb85c; /* Green background color */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+}
+    </style>
+</head>
+<body>
+<center>
+<img class="w-75" src="/static/img/download2.jpg"  alt="Image">
+</center>
+ <div class="decrypt_container">
+        <div class="decrypt_box">
+            <h4 align="center" style="color: white">View Work</h4>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        <tr>
+    <td><input type="file" name="file"></td>
+        </tr>
+        <tr>
+            <td><br><button type="submit" name="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+        </div>
+ </div>
+</body>
+</html>
+{% endblock %}

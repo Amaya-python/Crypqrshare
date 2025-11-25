@@ -119,7 +119,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Where Django collects static files for deployment
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Static files you created (CSS, JS, images)
 STATICFILES_DIRS = [

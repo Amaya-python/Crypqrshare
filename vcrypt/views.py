@@ -11,7 +11,7 @@ from django.core.files.storage import FileSystemStorage
 import mimetypes
 from qrcode import *
 from stegano import lsb
-from cv2 import cv2
+import cv2
 
 
 def encpass(request):

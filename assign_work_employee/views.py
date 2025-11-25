@@ -10,7 +10,7 @@ from django.core.files.storage import FileSystemStorage
 import mimetypes
 from qrcode import *
 from stegano import lsb
-from cv2 import cv2
+import cv2
 from django.http import HttpResponse
 from PIL import Image, ImageDraw
 from django.core.files.uploadedfile import InMemoryUploadedFile

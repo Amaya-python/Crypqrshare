@@ -15,9 +15,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "gkpl+i+a8hz-ym1%@_&cz67m+cs50z5!24touua0vyys)okg1w")
 
-DEBUG = True   # Change to False AFTER deployment success
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
+
 
 
 # Application definition
@@ -87,14 +88,11 @@ WSGI_APPLICATION = 'crypqrshare.wsgi.application'
 # For Render deployment, we will replace this with env variables
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'crypqrshare',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -129,7 +127,7 @@ STATICFILES_DIRS = [
 ]
 
 # Enable Whitenoise (required for Render)
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Media files (uploaded images)
 MEDIA_URL = '/media/'
